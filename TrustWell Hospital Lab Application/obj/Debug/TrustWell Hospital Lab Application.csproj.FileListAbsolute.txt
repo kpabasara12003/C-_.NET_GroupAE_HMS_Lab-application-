@@ -1,0 +1,22 @@
+C:\Users\User\Desktop\TrustWell\TrustWell Hospital Lab Application\TrustWell Hospital Lab Application\TrustWell Hospital Lab Application\bin\Debug\TrustWell Hospital Lab Application.exe.config
+C:\Users\User\Desktop\TrustWell\TrustWell Hospital Lab Application\TrustWell Hospital Lab Application\TrustWell Hospital Lab Application\bin\Debug\TrustWell Hospital Lab Application.exe
+C:\Users\User\Desktop\TrustWell\TrustWell Hospital Lab Application\TrustWell Hospital Lab Application\TrustWell Hospital Lab Application\bin\Debug\TrustWell Hospital Lab Application.pdb
+C:\Users\User\Desktop\TrustWell\TrustWell Hospital Lab Application\TrustWell Hospital Lab Application\TrustWell Hospital Lab Application\obj\Debug\TrustWell Hospital Lab Application.csproj.AssemblyReference.cache
+C:\Users\User\Desktop\TrustWell\TrustWell Hospital Lab Application\TrustWell Hospital Lab Application\TrustWell Hospital Lab Application\obj\Debug\TrustWell_Hospital_Lab_Application.Login.resources
+C:\Users\User\Desktop\TrustWell\TrustWell Hospital Lab Application\TrustWell Hospital Lab Application\TrustWell Hospital Lab Application\obj\Debug\TrustWell_Hospital_Lab_Application.Properties.Resources.resources
+C:\Users\User\Desktop\TrustWell\TrustWell Hospital Lab Application\TrustWell Hospital Lab Application\TrustWell Hospital Lab Application\obj\Debug\TrustWell Hospital Lab Application.csproj.GenerateResource.cache
+C:\Users\User\Desktop\TrustWell\TrustWell Hospital Lab Application\TrustWell Hospital Lab Application\TrustWell Hospital Lab Application\obj\Debug\TrustWell Hospital Lab Application.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\TrustWell\TrustWell Hospital Lab Application\TrustWell Hospital Lab Application\TrustWell Hospital Lab Application\obj\Debug\TrustWell Hospital Lab Application.exe
+C:\Users\User\Desktop\TrustWell\TrustWell Hospital Lab Application\TrustWell Hospital Lab Application\TrustWell Hospital Lab Application\obj\Debug\TrustWell Hospital Lab Application.pdb
+C:\Users\User\Desktop\TrustWell\TrustWell Hospital Lab Application\TrustWell Hospital Lab Application\TrustWell Hospital Lab Application\obj\Debug\TrustWell_Hospital_Lab_Application.Home.resources
+C:\Users\User\Desktop\TrustWell\TrustWell Hospital Lab Application\TrustWell Hospital Lab Application\TrustWell Hospital Lab Application\bin\Debug\BCrypt.Net-Next.dll
+C:\Users\User\Desktop\TrustWell\TrustWell Hospital Lab Application\TrustWell Hospital Lab Application\TrustWell Hospital Lab Application\bin\Debug\System.Buffers.dll
+C:\Users\User\Desktop\TrustWell\TrustWell Hospital Lab Application\TrustWell Hospital Lab Application\TrustWell Hospital Lab Application\bin\Debug\System.Memory.dll
+C:\Users\User\Desktop\TrustWell\TrustWell Hospital Lab Application\TrustWell Hospital Lab Application\TrustWell Hospital Lab Application\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\User\Desktop\TrustWell\TrustWell Hospital Lab Application\TrustWell Hospital Lab Application\TrustWell Hospital Lab Application\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\User\Desktop\TrustWell\TrustWell Hospital Lab Application\TrustWell Hospital Lab Application\TrustWell Hospital Lab Application\bin\Debug\BCrypt.Net-Next.xml
+C:\Users\User\Desktop\TrustWell\TrustWell Hospital Lab Application\TrustWell Hospital Lab Application\TrustWell Hospital Lab Application\bin\Debug\System.Buffers.xml
+C:\Users\User\Desktop\TrustWell\TrustWell Hospital Lab Application\TrustWell Hospital Lab Application\TrustWell Hospital Lab Application\bin\Debug\System.Memory.xml
+C:\Users\User\Desktop\TrustWell\TrustWell Hospital Lab Application\TrustWell Hospital Lab Application\TrustWell Hospital Lab Application\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\User\Desktop\TrustWell\TrustWell Hospital Lab Application\TrustWell Hospital Lab Application\TrustWell Hospital Lab Application\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\User\Desktop\TrustWell\TrustWell Hospital Lab Application\TrustWell Hospital Lab Application\TrustWell Hospital Lab Application\obj\Debug\TrustWel.F053CDEA.Up2Date

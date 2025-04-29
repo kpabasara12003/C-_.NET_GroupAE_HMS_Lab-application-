@@ -22,5 +22,20 @@ namespace TrustWell_Hospital_Lab_Application
         {
 
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            label1.Size = new Size(400, 60);
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

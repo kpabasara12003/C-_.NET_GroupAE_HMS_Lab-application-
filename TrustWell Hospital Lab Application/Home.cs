@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace TrustWell_Hospital_Lab_Application
 {
@@ -15,6 +17,15 @@ namespace TrustWell_Hospital_Lab_Application
         public Home()
         {
             InitializeComponent();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void Home_Load(object sender, EventArgs e)
+        {
+            this.label1.Text = $"Welcome  {UserSession.Username} ";
         }
     }
 }

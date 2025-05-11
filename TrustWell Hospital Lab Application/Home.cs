@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using MySql.Data.MySqlClient;
 
 namespace TrustWell_Hospital_Lab_Application
 {
@@ -19,13 +20,28 @@ namespace TrustWell_Hospital_Lab_Application
             InitializeComponent();
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        
+        public void LoadUserControl(UserControl uc)
         {
+            panel1.Controls.Clear();
+            uc.Dock = DockStyle.Fill;
+            panel1.Controls.Add(uc);
         }
 
         private void Home_Load(object sender, EventArgs e)
         {
+
             this.label1.Text = $"Welcome  {UserSession.Username} ";
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+           
+        }
+
+        private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
+        {
+             LoadUserControl(new page1());
         }
     }
 }

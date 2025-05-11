@@ -8,9 +8,9 @@ namespace WindowsFormsApp1
 {
     public static class UserSession
     {
-        public static int UserId { get; set; }
-        public static string Username { get; set; }
-        public static string Role { get; set; }
-        public static string StaffId { get; set; }
+        public static int UserId;
+        public static string Username;
+        public static string Role;
+        public static string StaffId;
     }
 }

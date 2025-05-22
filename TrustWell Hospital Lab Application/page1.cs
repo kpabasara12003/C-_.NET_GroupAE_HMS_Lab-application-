@@ -17,7 +17,7 @@ namespace TrustWell_Hospital_Lab_Application
         public page1()
         {
             InitializeComponent();
-            dataGridView1.CellClick += dataGridView1_CellClick;
+            gunaDataGridView1.CellClick += dataGridView1_CellClick;
 
         }
 
@@ -30,34 +30,30 @@ namespace TrustWell_Hospital_Lab_Application
                         Testtypes.TestName,
                         Patients.ContactNumber,
                         Patients.Email
-                    FROM 
-                        LabTests
-                    JOIN 
-                        Patients ON LabTests.PatientID = Patients.PatientID
-                    JOIN 
-                        Testtypes ON LabTests.TestType = Testtypes.TestID
-                    WHERE 
+                        FROM LabTests JOIN 
+                        Patients ON LabTests.PatientID = Patients.PatientID JOIN 
+                        Testtypes ON LabTests.TestType = Testtypes.TestID WHERE 
                         LabTests.Status = 'Pending'";
 
             DataTable dt = Database.ExecuteQuery(query, null);
-            dataGridView1.DataSource = dt;
+            gunaDataGridView1.DataSource = dt;
 
                     // if we use button or outer element
-            if (!dataGridView1.Columns.Contains("Action"))
+            if (!gunaDataGridView1.Columns.Contains("Action"))
             {
                 DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
                 btn.HeaderText = "Action";
                 btn.Text = "Report";
                 btn.UseColumnTextForButtonValue = true;
                 btn.Name = "Action";
-                dataGridView1.Columns.Add(btn);
+                gunaDataGridView1.Columns.Add(btn);
             }
         }
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0 && dataGridView1.Columns[e.ColumnIndex].Name == "Action")
+            if (e.RowIndex >= 0 && gunaDataGridView1.Columns[e.ColumnIndex].Name == "Action")
             {
-                int patientId = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["PatientID"].Value);
+                int patientId = Convert.ToInt32(gunaDataGridView1.Rows[e.RowIndex].Cells["PatientID"].Value);
 
 
 

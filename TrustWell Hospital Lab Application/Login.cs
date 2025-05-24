@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BCrypt.Net;
 using MySql.Data.MySqlClient;
-using WindowsFormsApp1;
 
 namespace TrustWell_Hospital_Lab_Application
 {

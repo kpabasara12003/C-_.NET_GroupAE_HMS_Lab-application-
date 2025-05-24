@@ -7,38 +7,39 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WindowsFormsApp1;
 using MySql.Data.MySqlClient;
 
 namespace TrustWell_Hospital_Lab_Application
 {
     public partial class page1: UserControl
     {
-        public page1()
+        private Home _mainForm;
+
+        public page1(Home mainForm)
         {
             InitializeComponent();
             gunaDataGridView1.CellClick += dataGridView1_CellClick;
+            _mainForm = mainForm;
+        }
 
+        public page1()
+        {
         }
 
         private void LoadLabTests()
         {
-            string query = @"SELECT 
-                        LabTests.LabTID,
-                        Patients.PatientName,
-                        Patients.PatientID,
-                        Testtypes.TestName,
-                        Patients.ContactNumber,
-                        Patients.Email
-                        FROM LabTests JOIN 
-                        Patients ON LabTests.PatientID = Patients.PatientID JOIN 
+            string query = @"SELECT LabTests.LabTID, Patients.PatientName, Patients.PatientID, Testtypes.TestName, Patients.ContactNumber, Patients.Email
+                        FROM LabTests JOIN Patients ON LabTests.PatientID = Patients.PatientID JOIN 
                         Testtypes ON LabTests.TestType = Testtypes.TestID WHERE 
                         LabTests.Status = 'Pending'";
 
             DataTable dt = Database.ExecuteQuery(query, null);
             gunaDataGridView1.DataSource = dt;
 
-                    // if we use button or outer element
+
+            if (gunaDataGridView1.Columns.Contains("PatientID"))
+                gunaDataGridView1.Columns["PatientID"].Visible = false;
+
             if (!gunaDataGridView1.Columns.Contains("Action"))
             {
                 DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
@@ -57,8 +58,7 @@ namespace TrustWell_Hospital_Lab_Application
 
 
 
-                Page2 detailsForm = new Page2(patientId);
-                detailsForm.Show();
+                _mainForm.LoadUserControl(new Uploade(patientId, _mainForm));
             }
         }
 
@@ -66,5 +66,6 @@ namespace TrustWell_Hospital_Lab_Application
         {
             LoadLabTests();
         }
+        
     }
 }

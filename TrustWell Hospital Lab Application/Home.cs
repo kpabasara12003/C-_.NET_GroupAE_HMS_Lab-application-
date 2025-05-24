@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WindowsFormsApp1;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using MySql.Data.MySqlClient;
 
@@ -30,7 +29,7 @@ namespace TrustWell_Hospital_Lab_Application
 
         private void Home_Load(object sender, EventArgs e)
         {
-
+            LoadUserControl(new page1(this));
             this.label1.Text = $"Welcome  {UserSession.Username} ";
         }
 
@@ -41,7 +40,8 @@ namespace TrustWell_Hospital_Lab_Application
 
         private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
         {
-             LoadUserControl(new page1());
+            LoadUserControl(new page1(this));
+
         }
     }
 }

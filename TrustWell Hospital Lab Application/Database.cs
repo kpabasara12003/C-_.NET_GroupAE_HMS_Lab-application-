@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 
 
-namespace WindowsFormsApp1
+namespace TrustWell_Hospital_Lab_Application
 {
     public static class Database
     {

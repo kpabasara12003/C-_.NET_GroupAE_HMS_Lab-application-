@@ -10,6 +10,10 @@ using System.Windows.Forms;
 using System.IO;
 using MySql.Data.MySqlClient;
 using MySql.Data.MySqlClient.Authentication;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Net.Mail;
+using System.Net;
 
 namespace TrustWell_Hospital_Lab_Application
 {
@@ -75,16 +79,17 @@ namespace TrustWell_Hospital_Lab_Application
             }
         }
 
+        private string uploadfilepath = "";
+
         private void gunaButton1_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "PDF Files (*.pdf)|*.pdf";
+            OpenFileDialog openFiledialog = new OpenFileDialog();
+            openFiledialog.Filter = "PDF Files (*.pdf)|*.pdf";
 
-            if(openFileDialog.ShowDialog() == DialogResult.OK)
+            if(openFiledialog.ShowDialog() == DialogResult.OK)
             {
-                string filename = Path.GetFileName(openFileDialog.FileName);
-
-                doctxt.Text = $"{filename}";
+                uploadfilepath = openFiledialog.FileName;
+                doctxt.Text = Path.GetFileName(openFiledialog.FileName);
             }
 
         }
@@ -94,7 +99,7 @@ namespace TrustWell_Hospital_Lab_Application
 
         }
 
-        private void subbut_Click(object sender, EventArgs e)
+        private async void subbut_Click(object sender, EventArgs e)
         {
             string formattedDate = DateTime.Now.ToString("yyyy-MM-dd");
             Random random = new Random();
@@ -170,6 +175,8 @@ namespace TrustWell_Hospital_Lab_Application
                     {
                         string filename = doctxt.Text.Trim();
 
+                        string doclin = $"https://focusnet.works/TrustWellLab/uploads/{filename}";
+
                         if (string.IsNullOrWhiteSpace(filename))
                         {
                             MessageBox.Show("Please select a file to upload.");
@@ -180,7 +187,7 @@ namespace TrustWell_Hospital_Lab_Application
 
                         MySqlParameter[] reportparam = new MySqlParameter[]
                         {
-                            new MySqlParameter("@Report", filename),
+                            new MySqlParameter("@Report", doclin),
                             new MySqlParameter("@LabID", Labid)
                         };
 
@@ -198,6 +205,84 @@ namespace TrustWell_Hospital_Lab_Application
                     };
 
                     Database.ExecuteNonQuery(updateStatquer, statparam);
+
+                    try
+                    {
+                        string filePath = uploadfilepath;
+
+                        if (!File.Exists(filePath))
+                        {
+                            MessageBox.Show("File does not exist: " + filePath);
+                            return;
+                        }
+
+                        string uploadUrl = "https://focusnet.works/TrustWellLab/upload.php";
+
+                        using (var client = new HttpClient())
+                        using (var form = new MultipartFormDataContent())
+                        using (var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read))
+                        {
+                            var fileContent = new StreamContent(fileStream);
+                            fileContent.Headers.ContentType = new MediaTypeHeaderValue("application/pdf");
+                            form.Add(fileContent, "file", Path.GetFileName(filePath));
+
+                            var response = await client.PostAsync(uploadUrl, form);
+                            string responseContent = await response.Content.ReadAsStringAsync();
+
+                            if (!response.IsSuccessStatusCode)
+                            {
+                                MessageBox.Show("Upload failed: " + responseContent);
+                                return;
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("File Upload Error: " + ex.Message);
+                        return;
+                    }
+
+                    // send email to patient 
+
+                    try
+                    {
+                        string filePath = uploadfilepath;
+
+                        if (!File.Exists(filePath))
+                        {
+                            MessageBox.Show("File not found for email : " + filePath);
+                            return;
+                        }
+
+                        MailMessage mail = new MailMessage();
+                        mail.From = new MailAddress("nisith.ipad@gmail.com", "TrustWell Hospital");
+                        mail.To.Add(patientEmail);
+                        mail.Subject = "Your Lab Test Report from TrustWell Hospital";
+                        mail.IsBodyHtml = true;
+
+                        string body = $@"
+                            <html>
+                                <body style='font-family: Arial; color: #333;'>
+                                    <p>Dear <strong>Patient</strong>,</p>
+                                    <p>Your lab test report is attached with this email.</p>
+                                    <p>Thank you for choosing TrustWell Hospital.</p>
+                                    <br/>
+                                    <p>Best regards,<br/><b>TrustWell Hospital Team</b></p>
+                                </body>
+                            </html>";
+
+                        mail.Body = body;
+                        mail.Attachments.Add(new Attachment(filePath));
+
+                        SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
+                        smtp.Credentials = new NetworkCredential("nisith.ipad@gmail.com", "gbuu txtr spqf pgtz");
+                        smtp.EnableSsl = true;
+                        smtp.Send(mail);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Email Sending Failed : " + ex.Message);
+                    }
                     MessageBox.Show("Test Result Submitted Successfully.");
                     amainForm.LoadUserControl(new page1(amainForm));
                 }

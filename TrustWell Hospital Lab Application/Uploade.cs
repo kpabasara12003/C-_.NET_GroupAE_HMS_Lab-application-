@@ -48,6 +48,7 @@ namespace TrustWell_Hospital_Lab_Application
 
         private void Uploade_Load(object sender, EventArgs e)
         {
+            label2.Text = $"{nameoftest} Test Lab Report Upload";
             try
             {
                 string query = "SELECT Type From Testtypes WHERE TestName = @TestName";
@@ -321,5 +322,15 @@ namespace TrustWell_Hospital_Lab_Application
                 MessageBox.Show("Error Submitting test result : " + ex.Message);
             }
         }// here create the funtions use patientid logics here
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

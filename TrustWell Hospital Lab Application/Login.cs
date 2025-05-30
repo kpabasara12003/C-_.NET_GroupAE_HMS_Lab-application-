@@ -41,8 +41,8 @@ namespace TrustWell_Hospital_Lab_Application
 
         private void button1_MouseClick(object sender, MouseEventArgs e)
         {
-            string email = textBox1.Text.Trim();
-            string password = textBox2.Text;
+            string email = gunaTextBox1.Text.Trim();
+            string password = gunaTextBox2.Text;
 
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
             {
@@ -112,6 +112,11 @@ namespace TrustWell_Hospital_Lab_Application
             };
 
             Database.ExecuteNonQuery(activityQuery, parameters);
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

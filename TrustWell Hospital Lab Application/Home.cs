@@ -14,9 +14,11 @@ namespace TrustWell_Hospital_Lab_Application
 {
     public partial class Home: Form
     {
+        
         public Home()
         {
             InitializeComponent();
+           
         }
 
         
@@ -25,12 +27,16 @@ namespace TrustWell_Hospital_Lab_Application
             panel1.Controls.Clear();
             uc.Dock = DockStyle.Fill;
             panel1.Controls.Add(uc);
+
         }
 
         private void Home_Load(object sender, EventArgs e)
         {
             LoadUserControl(new page1(this));
             this.label1.Text = $"Welcome  {UserSession.Username} ";
+
+
+           
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)

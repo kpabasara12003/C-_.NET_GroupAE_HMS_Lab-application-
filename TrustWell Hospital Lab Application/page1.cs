@@ -40,6 +40,9 @@ namespace TrustWell_Hospital_Lab_Application
             if (gunaDataGridView1.Columns.Contains("PatientID"))
                 gunaDataGridView1.Columns["PatientID"].Visible = false;
 
+            if (gunaDataGridView1.Columns.Contains("LabID"))
+                gunaDataGridView1.Columns["Lab ID"].Visible = true;
+
             if (!gunaDataGridView1.Columns.Contains("Action"))
             {
                 DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
@@ -55,10 +58,14 @@ namespace TrustWell_Hospital_Lab_Application
             if (e.RowIndex >= 0 && gunaDataGridView1.Columns[e.ColumnIndex].Name == "Action")
             {
                 int patientId = Convert.ToInt32(gunaDataGridView1.Rows[e.RowIndex].Cells["PatientID"].Value);
+                string Email = Convert.ToString(gunaDataGridView1.Rows[e.RowIndex].Cells["Email"].Value);
+                string Testname = Convert.ToString(gunaDataGridView1.Rows[e.RowIndex].Cells["TestName"].Value);
+                int labid = Convert.ToInt32(gunaDataGridView1.Rows[e.RowIndex].Cells["LabTID"].Value);
+                string pname = Convert.ToString(gunaDataGridView1.Rows[e.RowIndex].Cells["PatientName"].Value);
 
 
 
-                _mainForm.LoadUserControl(new Uploade(patientId, _mainForm));
+                _mainForm.LoadUserControl(new Uploade(patientId, _mainForm, Email, Testname, labid, pname));
             }
         }
 

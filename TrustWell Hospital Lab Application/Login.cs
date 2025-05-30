@@ -113,5 +113,10 @@ namespace TrustWell_Hospital_Lab_Application
 
             Database.ExecuteNonQuery(activityQuery, parameters);
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

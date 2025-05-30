@@ -36,6 +36,7 @@
             this.subbut = new Guna.UI.WinForms.GunaButton();
             this.paneltwo = new System.Windows.Forms.Panel();
             this.valbut = new Guna.UI.WinForms.GunaTextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.uppanel.SuspendLayout();
             this.panelone.SuspendLayout();
             this.paneltwo.SuspendLayout();
@@ -53,13 +54,14 @@
             // 
             // uppanel
             // 
+            this.uppanel.Controls.Add(this.label1);
             this.uppanel.Controls.Add(this.panelone);
             this.uppanel.Controls.Add(this.subbut);
             this.uppanel.Controls.Add(this.paneltwo);
             this.uppanel.Location = new System.Drawing.Point(314, 59);
-            this.uppanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.uppanel.Margin = new System.Windows.Forms.Padding(2);
             this.uppanel.Name = "uppanel";
-            this.uppanel.Size = new System.Drawing.Size(708, 493);
+            this.uppanel.Size = new System.Drawing.Size(768, 493);
             this.uppanel.TabIndex = 1;
             // 
             // panelone
@@ -67,7 +69,7 @@
             this.panelone.Controls.Add(this.doctxt);
             this.panelone.Controls.Add(this.gunaButton1);
             this.panelone.Location = new System.Drawing.Point(31, 41);
-            this.panelone.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelone.Margin = new System.Windows.Forms.Padding(2);
             this.panelone.Name = "panelone";
             this.panelone.Size = new System.Drawing.Size(656, 138);
             this.panelone.TabIndex = 4;
@@ -82,7 +84,7 @@
             this.doctxt.FocusedForeColor = System.Drawing.SystemColors.ControlText;
             this.doctxt.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.doctxt.Location = new System.Drawing.Point(21, 22);
-            this.doctxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.doctxt.Margin = new System.Windows.Forms.Padding(2);
             this.doctxt.Name = "doctxt";
             this.doctxt.PasswordChar = '\0';
             this.doctxt.SelectedText = "";
@@ -105,7 +107,7 @@
             this.gunaButton1.Image = null;
             this.gunaButton1.ImageSize = new System.Drawing.Size(20, 20);
             this.gunaButton1.Location = new System.Drawing.Point(236, 79);
-            this.gunaButton1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gunaButton1.Margin = new System.Windows.Forms.Padding(2);
             this.gunaButton1.Name = "gunaButton1";
             this.gunaButton1.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.gunaButton1.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -133,7 +135,7 @@
             this.subbut.Image = null;
             this.subbut.ImageSize = new System.Drawing.Size(20, 20);
             this.subbut.Location = new System.Drawing.Point(460, 403);
-            this.subbut.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.subbut.Margin = new System.Windows.Forms.Padding(2);
             this.subbut.Name = "subbut";
             this.subbut.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.subbut.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -151,7 +153,7 @@
             // 
             this.paneltwo.Controls.Add(this.valbut);
             this.paneltwo.Location = new System.Drawing.Point(29, 223);
-            this.paneltwo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.paneltwo.Margin = new System.Windows.Forms.Padding(2);
             this.paneltwo.Name = "paneltwo";
             this.paneltwo.Size = new System.Drawing.Size(657, 103);
             this.paneltwo.TabIndex = 2;
@@ -167,13 +169,23 @@
             this.valbut.FocusedForeColor = System.Drawing.SystemColors.ControlText;
             this.valbut.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.valbut.Location = new System.Drawing.Point(43, 29);
-            this.valbut.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.valbut.Margin = new System.Windows.Forms.Padding(2);
             this.valbut.Name = "valbut";
             this.valbut.PasswordChar = '\0';
             this.valbut.SelectedText = "";
             this.valbut.Size = new System.Drawing.Size(575, 43);
             this.valbut.TabIndex = 0;
             this.valbut.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(29, 363);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(63, 28);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "label1";
             // 
             // Uploade
             // 
@@ -185,6 +197,7 @@
             this.Size = new System.Drawing.Size(1154, 593);
             this.Load += new System.EventHandler(this.Uploade_Load);
             this.uppanel.ResumeLayout(false);
+            this.uppanel.PerformLayout();
             this.panelone.ResumeLayout(false);
             this.paneltwo.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -201,7 +214,6 @@
         private System.Windows.Forms.Panel paneltwo;
         private Guna.UI.WinForms.GunaTextBox valbut;
         private Guna.UI.WinForms.GunaPanel panelone;
-
-        
+        private System.Windows.Forms.Label label1;
     }
 }

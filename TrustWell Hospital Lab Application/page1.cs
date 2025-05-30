@@ -61,10 +61,11 @@ namespace TrustWell_Hospital_Lab_Application
                 string Email = Convert.ToString(gunaDataGridView1.Rows[e.RowIndex].Cells["Email"].Value);
                 string Testname = Convert.ToString(gunaDataGridView1.Rows[e.RowIndex].Cells["TestName"].Value);
                 int labid = Convert.ToInt32(gunaDataGridView1.Rows[e.RowIndex].Cells["LabTID"].Value);
+                string pname = Convert.ToString(gunaDataGridView1.Rows[e.RowIndex].Cells["PatientName"].Value);
 
 
 
-                _mainForm.LoadUserControl(new Uploade(patientId, _mainForm, Email, Testname, labid));
+                _mainForm.LoadUserControl(new Uploade(patientId, _mainForm, Email, Testname, labid, pname));
             }
         }
 

@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using MySql.Data.MySqlClient;
-using MySql.Data.MySqlClient.Authentication;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net.Mail;
@@ -24,7 +23,9 @@ namespace TrustWell_Hospital_Lab_Application
         private string patientEmail;
         private string TestName;
         private int Labid;
-        public Uploade(int patientid, Home mainForm, string Email, string Testname, int labid)
+        private string nameoftest;
+        private string PatientName;
+        public Uploade(int patientid, Home mainForm, string Email, string Testname, int labid, string pname)
         {
             InitializeComponent();
             patientId = patientid;
@@ -32,8 +33,11 @@ namespace TrustWell_Hospital_Lab_Application
             patientEmail = Email;
             TestName = Testname;
             Labid = labid;
+            nameoftest = Testname;
+            PatientName = pname;
             panelone.Visible = false;
             paneltwo.Visible = false;
+            
 
         }
 
@@ -102,9 +106,10 @@ namespace TrustWell_Hospital_Lab_Application
         private async void subbut_Click(object sender, EventArgs e)
         {
             string formattedDate = DateTime.Now.ToString("yyyy-MM-dd");
+            string datekey = DateTime.Now.ToString("yyMMdd");
             Random random = new Random();
-            int randomNumber = random.Next(10000, 900000);
-            string testid = $"{randomNumber + UserSession.StaffId + patientId}";
+            int randomNumber = random.Next(1000, 9000);
+            string testid = $"{datekey + randomNumber + UserSession.StaffId + patientId}";
             try
             {
                 string query = "SELECT Type, TestID FROM Testtypes WHERE TestName = @TestName";
@@ -255,27 +260,46 @@ namespace TrustWell_Hospital_Lab_Application
                         }
 
                         MailMessage mail = new MailMessage();
-                        mail.From = new MailAddress("nisith.ipad@gmail.com", "TrustWell Hospital");
+                        mail.From = new MailAddress(patientEmail, "TrustWell Hospital");
                         mail.To.Add(patientEmail);
                         mail.Subject = "Your Lab Test Report from TrustWell Hospital";
                         mail.IsBodyHtml = true;
 
                         string body = $@"
-                            <html>
-                                <body style='font-family: Arial; color: #333;'>
-                                    <p>Dear <strong>Patient</strong>,</p>
-                                    <p>Your lab test report is attached with this email.</p>
-                                    <p>Thank you for choosing TrustWell Hospital.</p>
-                                    <br/>
-                                    <p>Best regards,<br/><b>TrustWell Hospital Team</b></p>
-                                </body>
-                            </html>";
+                        <html>
+                        <body style=""margin:0; padding:0; font-family:Arial, sans-serif; background-color:#f4f4f4;"">
+                          <table align=""center"" cellpadding=""0"" cellspacing=""0"" width=""600"" style=""background-color:#ffffff; margin-top:30px; border-radius:8px; box-shadow:0 0 10px rgba(0,0,0,0.1);"">
+                            <tr>
+                              <td style=""padding: 20px 30px 10px 30px;"">
+                                <h2 style=""color:#2c3e50;"">Your Lab Reports {nameoftest} ID <span style=""color:#2980b9;"">{testid}</span></h2>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td style=""padding: 0px 30px 20px 30px; color:#555555; font-size: 15px; line-height: 1.6;"">
+                                <p>Dear Valued Patient {PatientName},</p>
+                                <p>Thank you for choosing <strong>Trust Well Hospital</strong> for your healthcare needs.</p>
+                                <p>Your lab report is now ready and has been attached to this email in PDF format for your review.</p>
+                                <p><strong>Please do not reply</strong> to this email.</p>
+                                <p>If you have any questions or concerns regarding your report, feel free to contact us at:</p>
+                                <p style=""color:#2980b9;""><strong>labtrustwell@gmail.com</strong></p>
+                                <p>If you need further assistance, please contact our laboratory or your attending physician at your earliest convenience.</p>
+                                <p><em>This is an automatically generated email and does not require a signature. Terms and conditions apply.</em></p>
+                                <p>Thank you.<br>
+                                Best regards,<br>
+                                <strong>Trust Well Hospital</strong><br>
+                                0113475984<br> 
+                            <a href=""http://www.trustwellhospital.com"" style=""color:#2980b9; text-decoration:none;"">www.trustwellhospital.com</a></p>
+                              </td>
+                            </tr>
+                          </table>
+                        </html>
+                        ";
 
                         mail.Body = body;
                         mail.Attachments.Add(new Attachment(filePath));
 
                         SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
-                        smtp.Credentials = new NetworkCredential("nisith.ipad@gmail.com", "gbuu txtr spqf pgtz");
+                        smtp.Credentials = new NetworkCredential("kusumindapabasara@gmail.com", "tppg zuwe nkaa lrsw");
                         smtp.EnableSsl = true;
                         smtp.Send(mail);
                     }

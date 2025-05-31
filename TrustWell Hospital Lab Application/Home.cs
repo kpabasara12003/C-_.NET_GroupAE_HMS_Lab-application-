@@ -35,8 +35,9 @@ namespace TrustWell_Hospital_Lab_Application
             LoadUserControl(new page1(this));
             this.label1.Text = $"Welcome  {UserSession.Username} ";
 
+            label3.Text = DateTime.Now.ToString("HH:mm:ss"); 
+            label5.Text = DateTime.Now.ToString("yyyy-MM-dd"); 
 
-           
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -48,6 +49,18 @@ namespace TrustWell_Hospital_Lab_Application
         {
             LoadUserControl(new page1(this));
 
+        }
+
+        private void gunaButton1_MouseClick(object sender, MouseEventArgs e)
+        {
+            var result = MessageBox.Show("Are you sure you want to logout?", "Confirm Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                
+                Login login = new Login();
+                login.Show();
+                this.Hide();
+            }
         }
     }
 }

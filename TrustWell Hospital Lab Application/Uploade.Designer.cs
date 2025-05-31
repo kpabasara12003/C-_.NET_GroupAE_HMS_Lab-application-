@@ -38,8 +38,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.cuiPanel1 = new CuoreUI.Controls.cuiPanel();
             this.button1 = new Guna.UI.WinForms.GunaButton();
+            this.cuiPanel1 = new CuoreUI.Controls.cuiPanel();
             this.panelone.SuspendLayout();
             this.paneltwo.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -55,12 +55,13 @@
             this.label1.ForeColor = System.Drawing.Color.Red;
             this.label1.Location = new System.Drawing.Point(59, 466);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(36, 28);
+            this.label1.Size = new System.Drawing.Size(289, 28);
             this.label1.TabIndex = 5;
-            this.label1.Text = "11";
+            this.label1.Text = "Select the Report and submit";
             // 
             // panelone
             // 
+            this.panelone.AutoSize = true;
             this.panelone.BackColor = System.Drawing.Color.White;
             this.panelone.Controls.Add(this.doctxt);
             this.panelone.Controls.Add(this.gunaButton1);
@@ -116,7 +117,7 @@
             this.gunaButton1.Radius = 15;
             this.gunaButton1.Size = new System.Drawing.Size(217, 57);
             this.gunaButton1.TabIndex = 1;
-            this.gunaButton1.Text = "Upload";
+            this.gunaButton1.Text = "Select";
             this.gunaButton1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.gunaButton1.Click += new System.EventHandler(this.gunaButton1_Click);
             // 
@@ -150,6 +151,7 @@
             // 
             // paneltwo
             // 
+            this.paneltwo.AutoSize = true;
             this.paneltwo.BackColor = System.Drawing.Color.White;
             this.paneltwo.Controls.Add(this.valbut);
             this.paneltwo.Location = new System.Drawing.Point(80, 326);
@@ -205,6 +207,7 @@
             // 
             // panel2
             // 
+            this.panel2.AutoScroll = true;
             this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel2.Controls.Add(this.button1);
@@ -214,25 +217,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1920, 666);
             this.panel2.TabIndex = 7;
-            // 
-            // cuiPanel1
-            // 
-            this.cuiPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cuiPanel1.BackColor = System.Drawing.Color.White;
-            this.cuiPanel1.Controls.Add(this.paneltwo);
-            this.cuiPanel1.Controls.Add(this.label1);
-            this.cuiPanel1.Controls.Add(this.panelone);
-            this.cuiPanel1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cuiPanel1.Location = new System.Drawing.Point(496, 35);
-            this.cuiPanel1.Name = "cuiPanel1";
-            this.cuiPanel1.OutlineThickness = 1F;
-            this.cuiPanel1.Padding = new System.Windows.Forms.Padding(10);
-            this.cuiPanel1.PanelColor = System.Drawing.Color.White;
-            this.cuiPanel1.PanelOutlineColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(117)))), ((int)(((byte)(172)))));
-            this.cuiPanel1.Rounding = new System.Windows.Forms.Padding(8);
-            this.cuiPanel1.Size = new System.Drawing.Size(982, 525);
-            this.cuiPanel1.TabIndex = 0;
             // 
             // button1
             // 
@@ -247,7 +231,7 @@
             this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Image = null;
             this.button1.ImageSize = new System.Drawing.Size(20, 20);
-            this.button1.Location = new System.Drawing.Point(46, 44);
+            this.button1.Location = new System.Drawing.Point(47, 35);
             this.button1.Name = "button1";
             this.button1.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.button1.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -255,11 +239,31 @@
             this.button1.OnHoverImage = null;
             this.button1.OnPressedColor = System.Drawing.Color.Black;
             this.button1.Radius = 8;
-            this.button1.Size = new System.Drawing.Size(194, 62);
+            this.button1.Size = new System.Drawing.Size(166, 53);
             this.button1.TabIndex = 1;
             this.button1.Text = "Go Back";
             this.button1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.button1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.button1_MouseClick);
+            // 
+            // cuiPanel1
+            // 
+            this.cuiPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cuiPanel1.AutoSize = true;
+            this.cuiPanel1.BackColor = System.Drawing.Color.White;
+            this.cuiPanel1.Controls.Add(this.paneltwo);
+            this.cuiPanel1.Controls.Add(this.label1);
+            this.cuiPanel1.Controls.Add(this.panelone);
+            this.cuiPanel1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cuiPanel1.Location = new System.Drawing.Point(437, 35);
+            this.cuiPanel1.Name = "cuiPanel1";
+            this.cuiPanel1.OutlineThickness = 1F;
+            this.cuiPanel1.Padding = new System.Windows.Forms.Padding(10);
+            this.cuiPanel1.PanelColor = System.Drawing.Color.White;
+            this.cuiPanel1.PanelOutlineColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(117)))), ((int)(((byte)(172)))));
+            this.cuiPanel1.Rounding = new System.Windows.Forms.Padding(8);
+            this.cuiPanel1.Size = new System.Drawing.Size(1037, 525);
+            this.cuiPanel1.TabIndex = 0;
             // 
             // Uploade
             // 
@@ -275,6 +279,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.cuiPanel1.ResumeLayout(false);
             this.cuiPanel1.PerformLayout();
             this.ResumeLayout(false);

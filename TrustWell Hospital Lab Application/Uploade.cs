@@ -107,9 +107,9 @@ namespace TrustWell_Hospital_Lab_Application
         private async void subbut_Click(object sender, EventArgs e)
         {
             string formattedDate = DateTime.Now.ToString("yyyy-MM-dd");
-            string datekey = DateTime.Now.ToString("yyMMdd");
+            string datekey = DateTime.Now.ToString("yyMM");
             Random random = new Random();
-            int randomNumber = random.Next(1000, 9000);
+            int randomNumber = random.Next(10000, 99990);
             string testid = $"{datekey + randomNumber + UserSession.StaffId + patientId}";
             try
             {
@@ -133,9 +133,21 @@ namespace TrustWell_Hospital_Lab_Application
 
                         if (string.IsNullOrWhiteSpace(resultval))
                         {
-                            MessageBox.Show("Please enter a valid result");
+                            label1.Text = "Please enter a valid result";
                             return;
                         }
+                       
+                        if (!int.TryParse(resultval, out int number))
+                        {
+                            label1.Text = "Please enter the test result in numbers";
+                            return;
+                        }
+                        if (number < 20 || number > 400)
+                        {
+                            label1.Text = "Please enter a valid test result";
+                            return;
+                        }
+
 
 
                         try

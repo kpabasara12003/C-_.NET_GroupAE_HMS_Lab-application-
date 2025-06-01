@@ -41,7 +41,7 @@ namespace TrustWell_Hospital_Lab_Application
                 timer.Tick += (s, e) =>
                 {
                     
-                    Time.Text = DateTime.Now.ToString("HH:mm");
+                    Time.Text = DateTime.Now.ToString("hh:mm tt");
                     Date.Text = DateTime.Now.ToString("yyyy-MM-dd");
                 };
                 timer.Start();

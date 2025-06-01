@@ -153,6 +153,7 @@ namespace TrustWell_Hospital_Lab_Application
                         try
                         {
                             string Filename = doctxt.Text.Trim();
+                            string doclin2 = $"https://focusnet.works/TrustWellLab/uploads/{Filename}";
                             string insertQueryVal = @"INSERT INTO TestReports (PatientID, TestType, TestID, value, Date) VALUES (@PatientID, @TestType, @TestID, @Value, @Date)";
 
                             if (string.IsNullOrWhiteSpace(Filename))
@@ -165,7 +166,7 @@ namespace TrustWell_Hospital_Lab_Application
 
                             MySqlParameter[] reportparam = new MySqlParameter[]
                             {
-                            new MySqlParameter("@Report", Filename),
+                            new MySqlParameter("@Report", doclin2),
                             new MySqlParameter("@LabID", Labid)
                             };
 

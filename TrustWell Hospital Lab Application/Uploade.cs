@@ -48,6 +48,7 @@ namespace TrustWell_Hospital_Lab_Application
 
         private void Uploade_Load(object sender, EventArgs e)
         {
+            label2.Text = $"{nameoftest} Test Lab Report Upload";
             try
             {
                 string query = "SELECT Type From Testtypes WHERE TestName = @TestName";
@@ -106,9 +107,9 @@ namespace TrustWell_Hospital_Lab_Application
         private async void subbut_Click(object sender, EventArgs e)
         {
             string formattedDate = DateTime.Now.ToString("yyyy-MM-dd");
-            string datekey = DateTime.Now.ToString("yyMMdd");
+            string datekey = DateTime.Now.ToString("yyMM");
             Random random = new Random();
-            int randomNumber = random.Next(1000, 9000);
+            int randomNumber = random.Next(10000, 99990);
             string testid = $"{datekey + randomNumber + UserSession.StaffId + patientId}";
             try
             {
@@ -132,14 +133,27 @@ namespace TrustWell_Hospital_Lab_Application
 
                         if (string.IsNullOrWhiteSpace(resultval))
                         {
-                            MessageBox.Show("Please enter a valid result");
+                            label1.Text = "Please enter a valid result";
                             return;
                         }
+                       
+                        if (!int.TryParse(resultval, out int number))
+                        {
+                            label1.Text = "Please enter the test result in numbers";
+                            return;
+                        }
+                        if (number < 20 || number > 400)
+                        {
+                            label1.Text = "Please enter a valid test result";
+                            return;
+                        }
+
 
 
                         try
                         {
                             string Filename = doctxt.Text.Trim();
+                            string doclin2 = $"https://focusnet.works/TrustWellLab/uploads/{Filename}";
                             string insertQueryVal = @"INSERT INTO TestReports (PatientID, TestType, TestID, value, Date) VALUES (@PatientID, @TestType, @TestID, @Value, @Date)";
 
                             if (string.IsNullOrWhiteSpace(Filename))
@@ -152,7 +166,7 @@ namespace TrustWell_Hospital_Lab_Application
 
                             MySqlParameter[] reportparam = new MySqlParameter[]
                             {
-                            new MySqlParameter("@Report", Filename),
+                            new MySqlParameter("@Report", doclin2),
                             new MySqlParameter("@LabID", Labid)
                             };
 
@@ -321,5 +335,15 @@ namespace TrustWell_Hospital_Lab_Application
                 MessageBox.Show("Error Submitting test result : " + ex.Message);
             }
         }// here create the funtions use patientid logics here
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

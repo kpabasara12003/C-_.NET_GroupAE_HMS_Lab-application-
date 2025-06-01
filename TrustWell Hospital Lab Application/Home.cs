@@ -14,7 +14,7 @@ namespace TrustWell_Hospital_Lab_Application
 {
     public partial class Home: Form
     {
-        
+        DateTimeUpdater dateTime1 = new DateTimeUpdater();
         public Home()
         {
             InitializeComponent();
@@ -30,14 +30,30 @@ namespace TrustWell_Hospital_Lab_Application
 
         }
 
+        public class DateTimeUpdater
+        {
+            private Timer timer;
+
+            public void StartDateTimeClock(Label Time, Label Date)
+            {
+                timer = new Timer();
+                timer.Interval = 1000;
+                timer.Tick += (s, e) =>
+                {
+                    
+                    Time.Text = DateTime.Now.ToString("HH:mm");
+                    Date.Text = DateTime.Now.ToString("yyyy-MM-dd");
+                };
+                timer.Start();
+            }
+        }
+
         private void Home_Load(object sender, EventArgs e)
         {
             LoadUserControl(new page1(this));
             this.label1.Text = $"Welcome  {UserSession.Username} ";
 
-            label3.Text = DateTime.Now.ToString("HH:mm:ss"); 
-            label5.Text = DateTime.Now.ToString("yyyy-MM-dd"); 
-
+            dateTime1.StartDateTimeClock(label3, label5);
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
